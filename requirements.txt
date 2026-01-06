@@ -1,0 +1,14 @@
+pypdf
+langchain-community
+langchain-core
+langchain-huggingface
+langchain-text-splitters
+faiss-cpu
+sentence-transformers
+transformers
+accelerate
+torch
+langgraph
+gradio
+pydantic
+requests

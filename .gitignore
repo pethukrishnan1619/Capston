@@ -1,0 +1,23 @@
+# Virtual env
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Local secrets
+.env
+*.log
+
+# (optional) if you don't want to push FAISS index
+faiss_store/
