@@ -24,6 +24,36 @@ def interface_function(user_query: str):
     return answer, citation_text, react_trace
 
 
+# def launch_demo():
+#     """Launch the Gradio app."""
+#     with gr.Blocks(title="Multi-Agent RAG + Tools (No API Key)") as demo:
+#         gr.Markdown("## 🧠 Multi-Agent RAG System")
+#         with gr.Row():
+#             with gr.Column(scale=2):
+#                 user_query = gr.Textbox(
+#                     label="Ask your question",
+#                     placeholder="Examples: weather in Chennai | calculate (10+20)/2 | Applications of AI",
+#                     lines=3,
+#                 )
+#                 ask_btn = gr.Button("Ask")
+#                 answer_box = gr.Textbox(label="Answer", lines=5, interactive=False)
+#                 citation_box = gr.Textbox(label="Citations", lines=5, interactive=False)
+#             with gr.Column(scale=1):
+#                 react_box = gr.Code(
+#                     label="ReAct Trace (Reason → Act → Observe)",
+#                     language="json",
+#                     lines=24,
+#                 )
+#         ask_btn.click(
+#             fn=interface_function,
+#             inputs=user_query,
+#             outputs=[answer_box, citation_box, react_box],
+#         )
+#     demo.launch()
+
+import gradio as gr
+import os
+
 def launch_demo():
     """Launch the Gradio app."""
     with gr.Blocks(title="Multi-Agent RAG + Tools (No API Key)") as demo:
@@ -49,4 +79,9 @@ def launch_demo():
             inputs=user_query,
             outputs=[answer_box, citation_box, react_box],
         )
-    demo.launch()
+    return demo   # ✅ return the demo object
+
+# --- Launch outside the function ---
+port = int(os.environ.get("PORT", "10000"))  # Render default is 10000
+demo = launch_demo()
+demo.launch(server_name="0.0.0.0", server_port=port)
